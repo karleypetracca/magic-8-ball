@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "./components/Form";
+import List from "./components/List";
 
 import "./App.css";
 
-function App() {
+const App = () => {
+	const [list, setList] = useState([]);
+
+	const addToList = (query) => {
+		setList(list.concat(query));
+	};
+
 	return (
 		<div className="App">
 			<header className="App-header">
-				<p>Magic 8</p>
+				<p>Magic 8 Ball</p>
 			</header>
-			<Form />
+			<Form onSubmit={addToList} />
+			<List list={list} />
 		</div>
 	);
-}
+};
 
 export default App;
